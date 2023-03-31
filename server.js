@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
+const productRoutes = require('./routes/productsRoutes')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -15,3 +16,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 });
+
+app.use('/', productRoutes);
