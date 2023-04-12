@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getAllProducts } from '../api/productApi';
+import { getAllProducts } from '../../api/productApi';
+import './product.css'
 
 const Products = () => {
   const [productData, setProductData] = useState(null);
@@ -18,11 +19,11 @@ const Products = () => {
 
   return (
     <div>
-      <div>This is products</div>
-      <div>
+      <div >This is products</div>
+      <div className='productGallery'>
         {productData &&
           productData.map((product) => (
-            <div key={product.id}>
+            <div className='product-item' key={product.id}>
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p>$ {product.price}</p>

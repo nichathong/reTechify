@@ -1,0 +1,28 @@
+.productGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* center align the grid */
+}
+
+.product-item {
+    width: calc(25% - 20px);
+    /* subtract the margin from the width */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: pink;
+}
+
+@media (max-width: 768px) {
+    .productGallery {
+        justify-content: flex-start;
+        /* left align the grid on smaller screens */
+    }
+
+    .product-item {
+        width: calc(50% - 20px);
+        /* display two columns on smaller screens */
+    }
+}
