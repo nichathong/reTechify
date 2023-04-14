@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllProducts } from '../../api/productApi';
 import './product.css'
 
+
 const Products = () => {
   const [productData, setProductData] = useState(null);
 
@@ -20,15 +21,22 @@ const Products = () => {
   return (
     <div>
       <div >This is products</div>
-      <div className='productGallery'>
-        {productData &&
-          productData.map((product) => (
-            <div className='product-item' key={product.id}>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>$ {product.price}</p>
-            </div>
-          ))}
+      <div className='banner-container'>
+        <img src="/images/AdobeStock_543849158.jpeg" alt='Banner-img' />
+
+      </div>
+      <div className='product-container'>
+        <div className='productGallery'>
+          {productData &&
+            productData.map((product) => (
+              <div className='product-item' key={product.id}>
+                <div className='product-name'>{product.name}</div>
+                <div className='product-destription'>{product.description}</div>
+                <div className='product-price'>$ {product.price}</div>
+              </div>
+              
+            ))}
+      </div>
       </div>
     </div>
   );
