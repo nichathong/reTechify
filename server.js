@@ -5,8 +5,8 @@ const sqlite3 = require('sqlite3').verbose();
 const productRoutes = require('./routes/productsRoutes')
 const orderRoutes = require('./routes/orderRoutes.js');
 const cartRoutes = require('./routes/cartRoutes')
+const userRoutes = require('./routes/userRoutes');
 // const { handleConnection } = require('./controllers/wsController');
-
 const app = express();
 const port = process.env.PORT || 5000;
 
