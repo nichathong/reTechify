@@ -30,6 +30,7 @@ const server = app.listen(port, () => {
 app.use('/', productRoutes);
 app.use('/', orderRoutes);
 app.use('/', cartRoutes);
+app.use('/', userRoutes);
 
 // Error handling middleware
 app.use(function(err, req, res, next) {
