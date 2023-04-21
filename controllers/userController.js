@@ -54,7 +54,7 @@ const deleteUser = (req, res) => {
 
     res.status(200).send(`User with id ${id} has been deleted`);
   
-});
+    });
 }
 
 module.exports = { createUser, getAllUsers, updateUser, deleteUser };
