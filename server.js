@@ -13,14 +13,14 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// const db = new sqlite3.Database('./reTechifyDb.sqlite', (err) => {
-//   if (err) {
-//     console.error(err.message);
-//   } else {
-//     console.log('Connected to the database.');
-//     console.log('Database file path: ' + db.filename);
-//   }
-// });
+const db = new sqlite3.Database('./reTechifyDb.sqlite', (err) => {
+  if (err) {
+    console.error(err.message);
+  } else {
+    console.log('Connected to the database.');
+    console.log('Database file path: ' + db.filename);
+  }
+});
 
 app.get('/', (req, res) => {
     res.send('Server is up!')

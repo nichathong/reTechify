@@ -1,5 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./reTechifyDb.sqlite')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const createUser = (req,res) => {
     const { name, email, password } = req.body;
@@ -57,4 +59,28 @@ const deleteUser = (req, res) => {
     });
 }
 
-module.exports = { createUser, getAllUsers, updateUser, deleteUser };
+const login = (req, res) => {
+    const { email, password } = req.body;
+
+  // Find the user based on the email
+  const user = users.find(user => user.email === email);
+
+  // If the user doesn't exist, return an error
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+
+  // Check if the password is correct
+  bcrypt.compare(password, user.password, (err, result) => {
+    if (err || !result) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // Generate a JSON Web Token (JWT) with the user's ID
+    const token = jwt.sign({ userId: user.id }, 'your_secret_key_here', { expiresIn: '1h' });
+
+    // Return the token as a response
+    res.status(200).json({ token });
+  });
+}
+module.exports = { createUser, getAllUsers, updateUser, deleteUser, login };
